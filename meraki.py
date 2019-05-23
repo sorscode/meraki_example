@@ -4082,3 +4082,17 @@ def getmxperf(apikey, networkid, serial, suppressprint=False):
     result = __returnhandler(
         dashboard.status_code, dashboard.text, calltype, suppressprint)
     return result
+
+# Get the Alert Settings for a given network
+def getalertsettings(apikey, networkid, suppressprint=False):
+    calltype = 'Alert Settings Detail'
+    geturl = '{0}/networks/{1}/alertSettings'.format(
+        str(base_url), str(networkid), str(serial))
+    headers = {
+        'x-cisco-meraki-api-key': format(str(apikey)),
+        'Content-Type': 'application/json'
+    }
+    dashboard = requests.get(geturl, headers=headers)
+    result = __returnhandler(
+        dashboard.status_code, dashboard.text, calltype, suppressprint)
+    return result
