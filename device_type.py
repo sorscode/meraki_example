@@ -47,7 +47,7 @@ def find_matches(filtered_data, uplink_data):
     for filtered in filtered_data:
         for uplinks in uplink_data:
             # Lets find a match between filtered and uplinks
-            if filtered['networkId'] == uplinks['networkId']:
+            if filtered['networkId'] == uplinks['networkId'] and 'wan1Ip' in uplinks:
                 # If a match is found, lets add it to our new list
                 results.append({'name': filtered['name'], \
                     'serial': filtered['serial'], \
